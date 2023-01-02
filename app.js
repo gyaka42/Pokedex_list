@@ -28,6 +28,19 @@ searchBtn.addEventListener("click", ()=> {
     search.classList.toggle("active")
 });
 
+searchInput.addEventListener("input",(e)=>{
+    const searchValue = searchInput.value.toLowerCase()
+    const pokemonName = document.querySelectorAll(".poke-name")
+
+    pokemonName.forEach((pokemonName) => {
+        if (pokemonName.innerHTML.toLowerCase().includes(searchValue)){
+            pokemonName.parentElement.parentElement.style.display="block"
+        } else {
+            pokemonName.parentElement.parentElement.style.display="none"
+        }
+    })
+})
+
 const fetchPokemons = async()=>{
     for(let i=1; i<pokemon_count; i++){
         await getPokemon(i)
